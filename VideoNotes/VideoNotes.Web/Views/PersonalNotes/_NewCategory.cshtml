@@ -1,0 +1,20 @@
+﻿@model VideoNotes.Web.ViewModels.CategoryViewModel
+@{
+    Layout = null;
+}
+@using (Ajax.BeginForm("AddCategory", "PersonalNotes", new AjaxOptions { HttpMethod = "Post", Confirm = "Are you shure that you want to add new category!", OnSuccess = "onNewCategoryAdded"}))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+    <div class="input-group margin-top30">
+        @Html.TextBoxFor(x => x.Name, new { @id = "new-category-name", @class = "form-control input-group ", @placeholder = "New category..." })
+            <span class="input-group-btn">
+            <button type="submit" class="btn btn-success btn-number" data-type="plus">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </span>
+    </div>
+    @Html.ValidationMessageFor(x => x.Name, String.Empty, new { @class = "error-messages" })
+
+}
+

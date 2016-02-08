@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E4AEDA73-9760-4E6D-A965-7D92FA046768}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VideoNotes.DataAccess</RootNamespace>
+    <AssemblyName>VideoNotes.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.1.3\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IDbContext.cs" />
+    <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="Migrations\201505251033230_InitialMigration.cs" />
+    <Compile Include="Migrations\201505251033230_InitialMigration.Designer.cs">
+      <DependentUpon>201505251033230_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505251035265_InitialMigrationCategoryChanges.cs" />
+    <Compile Include="Migrations\201505251035265_InitialMigrationCategoryChanges.Designer.cs">
+      <DependentUpon>201505251035265_InitialMigrationCategoryChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505251238585_NoteEntytiShareFieldAdded.cs" />
+    <Compile Include="Migrations\201505251238585_NoteEntytiShareFieldAdded.Designer.cs">
+      <DependentUpon>201505251238585_NoteEntytiShareFieldAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505251348376_EntityModelChanged.cs" />
+    <Compile Include="Migrations\201505251348376_EntityModelChanged.Designer.cs">
+      <DependentUpon>201505251348376_EntityModelChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505252135493_EntityModelDataGenerationIdentityAdded.cs" />
+    <Compile Include="Migrations\201505252135493_EntityModelDataGenerationIdentityAdded.Designer.cs">
+      <DependentUpon>201505252135493_EntityModelDataGenerationIdentityAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505252147186_EntityModelRelationWithIdentity.cs" />
+    <Compile Include="Migrations\201505252147186_EntityModelRelationWithIdentity.Designer.cs">
+      <DependentUpon>201505252147186_EntityModelRelationWithIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505260723273_EntityModelApplicationUserAdded.cs" />
+    <Compile Include="Migrations\201505260723273_EntityModelApplicationUserAdded.Designer.cs">
+      <DependentUpon>201505260723273_EntityModelApplicationUserAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505260816461_EntityModelTestDataInSeed.cs" />
+    <Compile Include="Migrations\201505260816461_EntityModelTestDataInSeed.Designer.cs">
+      <DependentUpon>201505260816461_EntityModelTestDataInSeed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505260831100_EntityModelTestDataInSeed1.cs" />
+    <Compile Include="Migrations\201505260831100_EntityModelTestDataInSeed1.Designer.cs">
+      <DependentUpon>201505260831100_EntityModelTestDataInSeed1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505260840451_EntityModelCategoryChanges.cs" />
+    <Compile Include="Migrations\201505260840451_EntityModelCategoryChanges.Designer.cs">
+      <DependentUpon>201505260840451_EntityModelCategoryChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505261013534_EntityModelAppUserChanges.cs" />
+    <Compile Include="Migrations\201505261013534_EntityModelAppUserChanges.Designer.cs">
+      <DependentUpon>201505261013534_EntityModelAppUserChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505261126175_EntityModelAppUserChanges1.cs" />
+    <Compile Include="Migrations\201505261126175_EntityModelAppUserChanges1.Designer.cs">
+      <DependentUpon>201505261126175_EntityModelAppUserChanges1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507081333004_Gategory_name_maxlen_changed.cs" />
+    <Compile Include="Migrations\201507081333004_Gategory_name_maxlen_changed.Designer.cs">
+      <DependentUpon>201507081333004_Gategory_name_maxlen_changed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Db\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201505251033230_InitialMigration.resx">
+      <DependentUpon>201505251033230_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505251035265_InitialMigrationCategoryChanges.resx">
+      <DependentUpon>201505251035265_InitialMigrationCategoryChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505251238585_NoteEntytiShareFieldAdded.resx">
+      <DependentUpon>201505251238585_NoteEntytiShareFieldAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505251348376_EntityModelChanged.resx">
+      <DependentUpon>201505251348376_EntityModelChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505252135493_EntityModelDataGenerationIdentityAdded.resx">
+      <DependentUpon>201505252135493_EntityModelDataGenerationIdentityAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505252147186_EntityModelRelationWithIdentity.resx">
+      <DependentUpon>201505252147186_EntityModelRelationWithIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505260723273_EntityModelApplicationUserAdded.resx">
+      <DependentUpon>201505260723273_EntityModelApplicationUserAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505260816461_EntityModelTestDataInSeed.resx">
+      <DependentUpon>201505260816461_EntityModelTestDataInSeed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505260831100_EntityModelTestDataInSeed1.resx">
+      <DependentUpon>201505260831100_EntityModelTestDataInSeed1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505260840451_EntityModelCategoryChanges.resx">
+      <DependentUpon>201505260840451_EntityModelCategoryChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505261013534_EntityModelAppUserChanges.resx">
+      <DependentUpon>201505261013534_EntityModelAppUserChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505261126175_EntityModelAppUserChanges1.resx">
+      <DependentUpon>201505261126175_EntityModelAppUserChanges1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507081333004_Gategory_name_maxlen_changed.resx">
+      <DependentUpon>201507081333004_Gategory_name_maxlen_changed.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VideoNotes.Core\VideoNotes.Core.csproj">
+      <Project>{83825453-2609-4b42-ac6c-e78cdda89ebc}</Project>
+      <Name>VideoNotes.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,63 @@
+﻿@using VideoNotes.Web.Infrastructure;
+@using VideoNotes.Web.ViewModels;
+@{
+    Layout = null;
+}
+@model IEnumerable<VideoViewModel>
+
+<div>
+    <div>
+        <div>
+            <div>
+                <input id="new-video-url" class="input-sm " type="text" placeholder="Video url...">
+            </div>
+        </div>
+        <div>
+            <div>
+                <input id="new-video-title" class="input-sm " type="text" placeholder="Video title...">
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <button id="add-video-btn" class="btn btn-sm btn-success margin-top5" onclick="addVideo()">Add video</button>
+        </div>
+    </div>
+
+
+</div>
+<div class="scrollable-videos">
+    @foreach (VideoViewModel a in Model)
+    {
+        <div class="row videos-list-item" onclick="videoClicked('@a.YtId', '@a.VideoId')">
+
+
+            <div class="col-sm-5">
+                <img class="img-thumbnail" src="@a.ThumbNail" alt="Thumbnail for video!" width="100" height="70" />
+            </div>
+            <div class="col-sm-5">
+                <strong>@a.Title</strong>
+            </div>
+            <div class="col-sm-2">
+                @Ajax.ActionLink(" ", "DeleteVideo", "PersonalNotes",
+
+                        new { videoId = a.VideoId },
+    new AjaxOptions
+    {
+        UpdateTargetId = "videos",
+        LoadingElementId = "timeDisplayLoading",
+        HttpMethod = "DELETE",
+        InsertionMode = InsertionMode.Replace
+
+    }, new { @class = "btn-sm glyphicon glyphicon-trash float-right", @style = "display:inline-block" })
+
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+

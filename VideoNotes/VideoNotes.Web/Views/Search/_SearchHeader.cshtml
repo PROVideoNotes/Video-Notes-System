@@ -1,0 +1,38 @@
+﻿<div class="row margin-top5">
+    <div class="col-md-12">
+        <div class="input-group" id="adv-search">
+            <input type="text" id="search-box" class="form-control" placeholder="Search for snippets" />
+            <div class="input-group-btn">
+                <div class="btn-group" role="group">
+                    <div class="dropdown dropdown-lg">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="filter">Search by</label>
+                                    <select class="form-control" id="search-by">
+                                        <option value="0" selected="selected">All shared notes</option>
+                                        <option value="1">All video titles</option>
+                                        <option value="2">My video titles</option>
+                                        <option value="3">My video notes</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group inner-search">
+                                    <label for="contain">Youtube video url</label>
+                                    <div class="input-group-btn">
+                                        <input class="form-control" id="youtube-search-box" type="text" />
+                                        <button type="button" class="btn btn-primary" onclick="getVideosByYoutubeId()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="search();"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

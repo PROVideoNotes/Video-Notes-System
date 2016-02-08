@@ -1,0 +1,21 @@
+﻿@using VideoNotes.Web.ViewModels
+@{
+    Layout = null;
+}
+@model IEnumerable<CategoryViewModel>
+<div id="category-list">
+    <button class="btn btn-success dropdown-toggle glyphicon glyphicon-option-vertical" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-expanded="false">
+        Categories
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu scrollable-menu dropdown-width categories" role="menu" aria-labelledby="dropdownMenu3" id="categories-ul">
+        <li onclick="event.stopPropagation();">
+
+        </li>
+        @foreach (CategoryViewModel a in Model)
+        {
+            var i = 0;
+            @Html.Partial("_Category", a);
+        }
+    </ul>
+</div>

@@ -1,0 +1,195 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+@section searchBox{
+    @Html.Partial("_searchHeader");
+}
+<div class="row home">
+    <div class="col-lg-3 scrollable-videos" id="videos">
+        <div class="loading-image" id="videos-loading-image"></div>
+    </div>
+    <div class="col-lg-6" id="playerFrame">
+        @Html.Partial("_PlayerIFrame")
+    </div>
+    <div class="col-lg-3 notes" id="notes">
+        <div class="loading-image" id="notes-loading-image"></div>
+    </div>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/youtube")
+    @Scripts.Render("~/bundles/jqueryajax")
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $('.search-panel .dropdown-menu').find('a').click(function (e) {
+            e.preventDefault();
+            var param = $(this).attr("href").replace("#", "");
+            var concept = $(this).text();
+            $('.search-panel span#search_concept').text(concept);
+            $('.input-group #search_param').val(param);
+        });
+    });
+</script>
+}
+
+
+<script type="text/javascript">
+
+    function search() {
+        $("#videos").empty();
+        $("#notes").empty();
+        var searchBy = $("#search-by").val();
+        alert(" test searchBy value = " + searchBy);
+        if (searchBy === '1') {
+            getAllVideosByKeyWords();
+            return;
+        } else if (searchBy === '0') {
+            getAllSharedNotesByKeyWords();
+            return;
+        } else if (searchBy === '2') {
+            getMyVideosByKeyWords();
+            return;
+        } else if (searchBy === '3') {
+            getMyNotesByKeyWords()
+            return;
+        }
+    }
+
+    function getAllSharedNotesByKeyWords() {
+
+        $("#notes-loading-image").show();
+        $.ajax({
+            type: "GET",
+            url: "/Search/SearchBySharedNotes/?keywords=" + $('#search-box').val(),
+            success: function (data) {
+                $("#notes-loading-image").hide();
+                $('#notes').html(data);
+            },
+            error: function (hah) {
+                $("#notes-loading-image").hide();
+                alert('Problem occured please try again!');
+            }
+        })
+    }
+
+    function getAllVideosByKeyWords() {
+
+        $("#videos-loading-image").show();
+        $.ajax({
+            type: "GET",
+            url: "/Search/SearchByAllVideoTitles/?keywords=" + $('#search-box').val(),
+            success: function (data) {
+                $("#videos-loading-image").hide();
+                $('#videos').html(data);
+            },
+            error: function (hah) {
+                $("#videos-loading-image").hide();
+                alert('Problem occured please try again!');
+            }
+        })
+    }
+
+    function getMyVideosByKeyWords() {
+
+        $("#videos-loading-image").show();
+        $.ajax({
+            type: "GET",
+            url: "/Search/SearchByUserVideoTitles/?keywords=" + $('#search-box').val(),
+            success: function (data) {
+                $("#videos-loading-image").hide();
+                $('#videos').html(data);
+            },
+            error: function (hah) {
+                $("#videos-loading-image").hide();
+                alert('Problem occured please try again!');
+            }
+        })
+    }
+
+    function getMyNotesByKeyWords() {
+
+        $("#notes-loading-image").show();
+        $.ajax({
+            type: "GET",
+            url: "/Search/SearchByUserNotes/?keywords=" + $('#search-box').val(),
+            success: function (data) {
+                $("#notes-loading-image").hide();
+                $('#notes').html(data);
+            },
+            error: function (hah) {
+                $("#notes-loading-image").hide();
+                alert('Problem occured please try again!');
+            }
+        })
+    }
+
+    function getVideosByYoutubeId() {
+        $("#videos-loading-image").show();
+        var url = $('#youtube-search-box').val(),id = extractId(url);
+        $.ajax({
+            type: "GET",
+            url: "/Search/SearchByYoutubeId/?id=" + id,
+            success: function (data) {
+                $("#videos-loading-image").hide();
+                $('#videos').html(data);
+            },
+            error: function (hah) {
+                $("#videos-loading-image").hide();
+                alert('Problem occured please try again!');
+            }
+        })
+    }
+
+    function extractId() {
+        var video_id = $('#youtube-search-box').val().split('v=')[1];
+        var ampersandPosition = video_id.indexOf('&');
+        if (ampersandPosition != -1) {
+            video_id = video_id.substring(0, ampersandPosition);
+        }
+        return video_id;
+    }
+    //function repeated
+    function videoClicked(YtId, VideoId) {
+        player.loadVideoById(YtId);
+        getSharedNotesForGivenVideo(VideoId);
+    }
+    //function repeated
+    function getSharedNotesForGivenVideo(videoId) {
+        $("#notes-loading-image").show();
+        $.ajax({
+            type: "GET",
+            url: "/Search/GetSharedNotesFor/?videoId=" + videoId,
+            success: function (data) {
+                $("#notes-loading-image").hide();
+                $('#notes').html(data);
+            },
+            error: function (hah) {
+                $("#notes-loading-image").hide();
+                alert('Problem occured please try again!' + hah);
+            }
+        })
+    }
+
+    function loadVideoAndSeekTo(videoId, time) {
+        var YtId;
+        $.ajax({
+            type: "GET",
+            url: "/Search/GetYtIdFor/?videoId=" + videoId,
+            success: function (data) {
+                YtId = data.Data;
+               
+            
+                player.loadVideoById(YtId);
+                player.seekTo(time, true);
+            },
+            error: function (hah) {
+
+                alert('Problem occured please try again!' + hah);
+            }
+        });
+    }
+    
+</script>

@@ -1,0 +1,358 @@
+﻿body {
+    padding-top: 0;
+    padding-bottom: 20px;
+    background-image: url("images/background-image.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.category-item > a {
+    display: block;
+    padding: 3px 20px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.home {
+    font-size: 12px;
+    margin-top: 20px;
+}
+/*menu css*/
+.mb_menu {
+    position: fixed;
+    top: 20%;
+    left: 0;
+    z-index: 11;
+}
+
+    .mb_menu a {
+        background-color: #000;
+        margin-bottom: 2px;
+        opacity: 0.9;
+        display: block;
+        width: 98px;
+        height: 98px;
+        color: #fff;
+        line-height: 98px;
+        text-align: center;
+        text-transform: uppercase;
+        outline: none;
+        -webkit-transition: all 0.2s ease-in;
+        -moz-transition: all 0.2s ease-in;
+        -o-transition: all 0.2s ease-in;
+        -transition: all 0.2s ease-in;
+    }
+
+        .mb_menu a:hover {
+            color: #000;
+            background-color: #fff;
+        }
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    background: rgba(0, 0, 0,0.2);
+    margin: auto;
+    margin-top: 5%;
+    height: 100%;
+}
+ @media (max-width: 768px){
+     .body-content{
+         margin-top:35%;
+     }
+ }
+
+#topright-repo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    height: 105px;
+    width: 105px;
+    background: url('images/github-ribbon.png') no-repeat;
+    background-size: 100%;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+::-webkit-scrollbar {
+    width: 1px; /* for vertical scrollbars */
+    height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(76, 255, 0);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.navigation-bar-style {
+    background: #337ab7;
+}
+
+    .navigation-bar-style .navbar-nav > li > a {
+        color: white !important;
+    }
+
+    .navigation-bar-style .navbar-brand {
+        color: white !important;
+    }
+
+        .navigation-bar-style .navbar-brand span {
+            color: brown !important;
+        }
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}*/
+.videos-list-item {
+    padding-top: 20px;
+}
+
+    .videos-list-item:hover {
+        cursor: pointer;
+    }
+
+.notes {
+    color: #555 !important;
+    font-size: 12px;
+    height: auto;
+    max-height: 500px;
+    overflow-x: hidden;
+}
+
+.note {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-top: 20px;
+    margin-right: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    background: url('images/note.png');
+    background-position: 0 0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    opacity: 1;
+}
+
+.share-font-size {
+    font-size: 16px;
+}
+
+#new-note-content {
+    height: 125px;
+}
+
+.margin-top30 {
+    margin-top: 30px;
+}
+
+#player {
+    width: 100%;
+}
+
+.fieldset-margin {
+    margin-top: 20px;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.scrollable-videos {
+    height: auto;
+    max-height: 400px;
+    overflow-x: hidden;
+}
+
+.scrollable-notes {
+    height: auto;
+    max-height: 600px;
+    overflow-x: hidden;
+}
+
+.note-text-area {
+    width: 300px;
+    max-height: 300px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+    margin-right: 5px;
+}
+
+.margin-top5 {
+    margin-top: 5px;
+}
+
+.time {
+    font-size: 8px;
+    !important;
+}
+
+.loading-image {
+    width: 70px;
+    height: 70px;
+    background: url('images/loading.gif');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 100%;
+    display: none;
+}
+
+#category-list {
+    position: relative;
+}
+
+.categories {
+    padding: 0 !important;
+    padding-bottom: 5px !important;
+}
+
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+
+.btn-group .btn {
+    border-radius: 0;
+    margin-left: -1px;
+}
+
+    .btn-group .btn:last-child {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+.btn-group .form-horizontal .btn[type="submit"] {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+    #adv-search {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .home {
+        margin-top: 50px;
+    }
+
+    .dropdown.dropdown-lg {
+        position: static !important;
+    }
+
+        .dropdown.dropdown-lg .dropdown-menu {
+            min-width: 500px;
+        }
+}
+
+@media (min-width: 768px) {
+    .navbar-inverse {
+           background:rgba(255, 255, 255,0);
+           border:none;
+    }
+    .navbar-inverse .navbar-nav > li > a{
+        color:black;
+    }
+    .navbar-inverse .navbar-nav > li > a:hover{
+        color:GrayText; 
+    }
+}
+
+
+@media (max-width: 767px) {
+    #topright-repo {
+        display: none;
+    }
+}
+@media (max-width: 945px){
+    .mb_menu{
+        top:30%;
+    }
+    .mb_menu a{
+        width:69px;
+        height:69px;
+        font-size:10px;
+    }
+}
+
+.dropdown-width {
+    width: 350px;
+}
+
+.error-messages {
+    color: red;
+}
+
+.delete-category {
+    float: right;
+}
+.inner-search{
+    width:90% !important;
+}
+#search-box-header{
+    position:relative;
+    margin:auto;
+    top:50px;
+}
+footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+}
+.baner h1{
+  font: 400 60px/.8 MetricWeb-Semibold,"Arial Bold",Gadget,sans-serif;
+}
+.banner-image-render{
+    width:100%;
+    opacity:0.8;
+}
+.logo{
+    padding:0px !important;
+}
+.logo img{
+    width:50px;
+}

@@ -1,0 +1,28 @@
+﻿@model VideoNotes.Web.ViewModels.NoteViewModel
+@{
+    Layout = null;
+}
+@using (Ajax.BeginForm("AddNote", "PersonalNotes", new AjaxOptions { UpdateTargetId = "notes", HttpMethod = "Post", Confirm = "Äre you shure that you want to add this note!", OnSuccess = " alert()" }))
+{
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary(true)
+
+    @Html.TextBoxFor(x => x.Title, new { @id = "new-note-title", @class = "form-control input-group", @placeholder = "Note title..." })
+    @Html.ValidationMessageFor(x => x.Title, String.Empty, new { @class = "error-messages" })
+    <br />
+
+    @Html.TextAreaFor(x => x.Content, new { @class = "text-justify text-success form-control", @id = "new-note-content", @placeholder = "Note content..." })
+    @Html.ValidationMessageFor(x => x.Content, String.Empty, new { @class = "error-messages" })
+    <br />
+    <div class="float-right">
+        @Html.LabelFor(x => x.Share, new { @class = "glyphicon glyphicon-share share-font-size" })
+        @Html.CheckBoxFor(x => x.Share, new { @id = "new-note-share"})
+
+        <input type="hidden" id="__videoId" name="VideoId" />
+        <input type="hidden" id="__note-time" name="Time">
+
+        <div>
+            <button type="submit" value="Save" class=" btn btn-sm btn-success glyphicon glyphicon-save" onclick="setNoteTime()">Save</button>
+        </div>
+    </div>
+}

@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+
+@using VideoNotes.Web.ViewModels;
+@model IEnumerable<VideoViewModel>
+
+@foreach (VideoViewModel a in Model)
+{
+    <div class="row videos-list-item" onclick="videoClicked('@a.YtId', '@a.VideoId')">
+        <div class="col-sm-5">
+            <img class="img-thumbnail" src="@a.ThumbNail" alt="Thumbnail for video!" width="100" height="70" />
+        </div>
+        <div class="col-sm-5">
+            <strong>@a.Title</strong>
+        </div>
+        <div class="col-sm-2">
+        </div>
+    </div>
+}

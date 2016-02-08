@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+@using VideoNotes.Web.ViewModels
+@model IEnumerable<NoteViewModel>
+@foreach (NoteViewModel a in Model)
+{
+    <div class="row note " onclick="@if (ViewBag.IncludeVideoId != null && ViewBag.IncludeVideoId)
+                                    {
+                                        string res = "loadVideoAndSeekTo(" + a.VideoId + "," + a.Time + ")";
+        @res
+    }
+    else
+    {
+        string res = "player.seekTo(" + a.Time + " , true)";
+          @res
+    }
+    ">
+        <div class=" col-sm-3 float-left">
+            <span class="time">@a.Time</span>
+        </div>
+        <div class="col-sm-9">
+            <strong>@a.Title</strong>
+        </div>
+        <div>
+            <p>@a.Content</p>
+        </div>
+    </div>
+}

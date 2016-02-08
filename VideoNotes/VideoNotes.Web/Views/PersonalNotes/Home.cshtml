@@ -1,0 +1,243 @@
+﻿@using VideoNotes.Web.ViewModels
+@model IEnumerable<CategoryViewModel>
+@{
+    ViewBag.Title = "Home";
+}
+
+@section  cssStyle
+{
+    @Styles.Render("~/Content/drawing/css")
+}
+@Html.AntiForgeryToken()
+
+<div class="row home">
+    <input type="hidden" id="__categoryId" />
+    <div class="col-md-3">
+        @Html.Partial("_CategoryList",Model)
+        @Html.Partial("_NewCategory",new CategoryViewModel())
+        <fieldset class="fieldset-margin">
+            <legend id="category-name"></legend>
+            <div class="loading-image" id="videos-loading-image"></div>
+            <div id="videos">
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-md-6">
+        @Html.Partial("_PlayerIFrame")
+        <div>
+            @Html.Partial("_NewNote", new NoteViewModel())
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="loading-image" id="notes-loading-image"></div>
+        <div class="notes" id="notes"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <button id="show-drawing-panel" class="btn btn-success dropdown-toggle" onclick="toggleEffect()">Draw model related to this video! <span class="caret"></span></button>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+<div class="row" id="drawing-panel">
+    <div class="row" style="-moz-box-sizing: border-box -webkit-box-sizing: border-box box-sizing: border-box">
+        <div class="col-md-3">
+           
+           
+            <button id="arrow-top" class="btn btn-success dropdown-toggle">Colors <span class="caret"></span></button>
+            <div id="top-options">
+                <div id="color-picker">
+                    <div id="red"></div>
+                    <div id="green"></div>
+                    <div id="blue"></div>
+                    <div id="swatch" class="ui-widget-content ui-corner-all"></div>
+                    <div id="colors"></div>
+                </div>
+            </div>
+            <button id="drawing-tools" class="btn btn-success dropdown-toggle">Tools <span class="caret"></span></button>
+            <nav id="nav-tools">
+            </nav>
+            <span id="radius">
+                Size
+                <button id="minus">-</button>
+                <span id="rad-value">13</span>
+                <button id="plus">+</button>
+            </span>
+            
+        </div>
+        <div class="col-lg-6">
+            <div id="paint-container" style="width:100%; height:500px">
+                <canvas id="canvas"></canvas>
+            </div>
+
+        </div>
+    </div>
+    <div class="row" style="margin-top:50px">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <header>
+                <a id="save" class="btn btn-success dropdown-toggle">Save</a>
+                <button id="load" class="btn btn-success dropdown-toggle">Load</button>
+                <button id="clear" class="btn btn-success dropdown-toggle">Clear</button>
+                <form id="load-pic">
+                    <input type="url" placeholder="URL" id="url">
+                    <input type="button" value="Submit" id="submit">
+                </form>
+            </header>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/youtube")
+    @Scripts.Render("~/bundles/jqueryajax")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/drawingPanel")
+    @Scripts.Render("~/bundles/drawingTools")
+    @Scripts.Render("~/bundles/drawingUI")
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            setTimeout(function () {
+                console.log("hide drawing-panel");
+                $("#drawing-panel").hide();
+            }, 10);
+
+        });
+
+        function toggleEffect() {
+            console.log("show - drawing panel button clicked!");
+            $("#drawing-panel").toggle("blind", 1000);
+
+            setTimeout(function () {
+                $("html, body").animate({ scrollTop: $(document).height() - $(window).height() });
+                console.log('scrolled down to bottom!');
+            }, 1000);
+
+        };
+
+        function onSuccess(categoryName, categoryId) {
+            $("#category-name").html(categoryName);
+            $("#__categoryId").val(categoryId);
+        }
+
+        function videoClicked(YtId, VideoId) {
+            player.loadVideoById(YtId);
+            $("#__videoId").val(VideoId);
+            getNotes();
+        }
+
+        function setNoteTime() {
+            $('#__note-time').val(player.getCurrentTime());
+        }
+
+        function addNote() {
+            $("#notes-loading-image").show();
+            var token = $('input[name="__RequestVerificationToken"]').val();
+            var timeOfVideo = player.getCurrentTime();
+            var share;
+            if ($('#new-note-share').is(':checked')) {
+                share = true;
+            } else {
+                share = false;
+            }
+
+            var note = {
+                __RequestVerificationToken: token,
+                Title: $('#new-note-title').val(),
+                Content: $('#new-note-content').val(),
+                VideoId: $("#__videoId").val(),
+                Color: $('#note-important').val(),
+                Share: share,
+                Time: timeOfVideo
+            }
+            alert(note.Color + " " + note.Content + " " + note.Share + " " + note.Title + " " + note.Time + note.VideoId);
+
+            $.ajax({
+                type: "POST",
+                url: "/PersonalNotes/AddNote",
+                data: note,
+                success: function (data) {
+                    $("#notes-loading-image").hide();
+                    $("#notes").html(data);
+                    $('#new-note-content').val('');
+                    $('#new-note-title').val('');
+                },
+                error: function (hah) {
+                    $("#notes-loading-image").hide();
+                    alert('Problem occured while adding a note please try again! ' + hah.responseText);
+                }
+            })
+        }
+
+        function getNotes() {
+
+            $("#notes-loading-image").show();
+            $.ajax({
+                type: "GET",
+                url: "/PersonalNotes/GetNotes/?videoId=" + $('#__videoId').val(),
+                success: function (data) {
+                    $("#notes-loading-image").hide();
+                    $('#notes').html(data);
+                },
+                error: function (hah) {
+                    $("#notes-loading-image").hide();
+                    alert('Problem occured please try again!' + hah);
+                }
+            })
+        }
+
+        function onNewCategoryAdded(data) {
+            $("#categories-ul").prepend(data);
+            $($("#categories-ul").find("li a")[0]).trigger("click");
+        }
+
+        function addVideo() {
+            var videoId = extractId(),
+             thumbNail = "http://img.youtube.com/vi/" + videoId + "/0.jpg",
+             token = $('input[name="__RequestVerificationToken"]').val(),
+             video = {
+                 VideoId: 0,
+                 ThumbNail: thumbNail,
+                 YtId: videoId,
+                 Title: $('#new-video-title').val(),
+                 __RequestVerificationToken: token,
+                 CategoryId: $('#__categoryId').val()
+             }
+            $("#videos-loading-image").show();
+
+            $.ajax({
+                type: "POST",
+                url: "/PersonalNotes/AddVideo",
+                data: video,
+                success: function (data) {
+                    $("#videos-loading-image").hide();
+                    $("#videos").html(data);
+                },
+                error: function (hah) {
+                    $("#videos-loading-image").hide();
+                    alert('Problem occured please try again!' + hah.responseText);
+
+                }
+            })
+        }
+
+        function extractId() {
+            var video_id = $('#new-video-url').val().split('v=')[1];
+            var ampersandPosition = video_id.indexOf('&');
+            if (ampersandPosition != -1) {
+                video_id = video_id.substring(0, ampersandPosition);
+            }
+            return video_id;
+        }
+    </script>
+}

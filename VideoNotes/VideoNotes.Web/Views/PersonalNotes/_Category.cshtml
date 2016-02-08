@@ -1,0 +1,35 @@
+﻿@using VideoNotes.Web.ViewModels
+@{
+    Layout = null;
+}
+@model CategoryViewModel
+<li role="presentation" class="margin-top5">
+
+    <div class="category-item clearfix">
+        @Ajax.ActionLink(@Model.Name, "GetVideos", "PersonalNotes",
+
+                        new { categoryId = Model.CategoryId },
+    new AjaxOptions
+    {
+        UpdateTargetId = "videos",
+        LoadingElementId = "timeDisplayLoading",
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        OnSuccess = "onSuccess(\"" + Model.Name + "\", \"" + Model.CategoryId + "\")"
+
+    }, new { @role = "menuitem", @class = "float-left" })
+
+        @Ajax.ActionLink(" ", "DeleteCategory", "PersonalNotes",
+
+                                new { categoryId = Model.CategoryId },
+    new AjaxOptions
+    {
+        UpdateTargetId = "category-list",
+        LoadingElementId = "timeDisplayLoading",
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        Confirm = "Are you shure that you want to delete " + Model.Name + " category?",
+        OnSuccess = "onCategoryDeletedSuccessfuly(\"" + Model.CategoryId + "\")"
+    }, new { @id = "delete-category", @class = " btn glyphicon glyphicon-trash delete-category", @style = "display:inline-block" })
+    </div>
+</li>

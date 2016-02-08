@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VideoNotes.Core.Entities.AspNetRole" Collapsed="true">
+    <Position X="6.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAQAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\AspNetRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VideoNotes.Core.Entities.Note" Collapsed="true">
+    <Position X="8.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAEAAAAAAAAAAAKAAAAAAAAAAgAAAAQg=</HashCode>
+      <FileName>Entities\Note.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VideoNotes.Core.Entities.CategoryVideo" Collapsed="true">
+    <Position X="6.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAgAAAAAAAAAAAIAAAAAAAAAAAAAACAg=</HashCode>
+      <FileName>Entities\CategoryVideo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VideoNotes.Core.Entities.Category" Collapsed="true">
+    <Position X="10" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAEAAgAAAAAAAAwAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VideoNotes.Core.Entities.C__MigrationHistory" Collapsed="true">
+    <Position X="8.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAACAAAAEAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Entities\C__MigrationHistory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VideoNotes.Core.Entities.AspNetUserLogin" Collapsed="true">
+    <Position X="6.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAgAAAAAEAAAABAAAAAAAAA=</HashCode>
+      <FileName>Entities\AspNetUserLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VideoNotes.Core.Entities.AspNetUserClaim" Collapsed="true">
+    <Position X="10" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAAAAAAAAAAAAQAAAAAgAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Entities\AspNetUserClaim.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VideoNotes.Core.Entities.AspNetUser" Collapsed="true">
+    <Position X="8.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAACAAoEAAAAAAQAABAAAAUAAIAQQAABAAAQE=</HashCode>
+      <FileName>Entities\AspNetUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VideoNotes.Core.Entities.Video" Collapsed="true">
+    <Position X="10" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAwAAAAACEAAEAAAAAIAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Video.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
